@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Redondance DHCP sous Linux et Windows - Projet GSB" />
+    <meta name="author" content="Eliott Rivaletto" />
+    <title>Projet 1.1 - DHCP Redondant | Eliott Rivaletto</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column h-100 bg-light">
+<main class="flex-shrink-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-5">
+            <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Eliott Rivaletto</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resume.html">Expériences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="veille.html">Veille technologique</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5">
+        <div class="container px-5 mb-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projet 1.1 : DHCP Redondant (GSB)</span></h1>
+                <p class="text-muted mt-3">Mise en place d'une redondance DHCP sur Debian et Windows Server.</p>
+            </div>
+            <div class="row gx-5">
+                <div class="col-lg-8">
+                    <div class="mb-5">
+                        <h2 class="fw-bolder text-primary">Résumé du projet</h2>
+                        <p>Ce projet s'inscrit dans la continuité de la refonte du réseau pour GSB. L’objectif était d’assurer une haute disponibilité du service DHCP en ajoutant un serveur Debian en redondance à un serveur Windows existant, le tout dans un environnement virtualisé sur ESXi.</p>
+                        <ul>
+                            <li>Création d’une machine virtuelle Debian.</li>
+                            <li>Installation et configuration de ISC DHCP Server.</li>
+                            <li>Configuration des plages d’adresses IP et des VLANs associés.</li>
+                            <li>Test d'attribution d'adresses IP via relais DHCP sur un switch de niveau 3.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-5">
+                        <h2 class="fw-bolder text-success">Compétences développées</h2>
+                        <ul>
+                            <li>Installation d’un système Linux sur hyperviseur ESXi.</li>
+                            <li>Déploiement et configuration d’un service réseau (DHCP).</li>
+                            <li>Tests de connectivité, vérification des baux DHCP.</li>
+                            <li>Réseau : gestion des VLANs, relais DHCP, interconnexion L3.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-5">
+                        <h2 class="fw-bolder text-warning">Exemples et explications</h2>
+
+                        <!-- Exemple 1 -->
+                        <div class="mb-4">
+                            <h3 class="text-secondary">Schéma réseau DHCP & VLANs</h3>
+                            <img class="img-fluid rounded shadow mb-3" src="schema_dhcp_vlan.png" alt="Schéma DHCP">
+                            <p class="text-muted">Ce schéma présente la segmentation du réseau avec des VLANs, et les relais DHCP activés sur le switch L3 redirigeant les requêtes vers les deux serveurs DHCP en redondance.</p>
+                        </div>
+
+                        <!-- Exemple 2 -->
+                        <div class="mb-4">
+                            <h3 class="text-secondary">Configuration ISC DHCP sur Debian</h3>
+                            <img class="img-fluid rounded shadow mb-3" src="isc_dhcp_conf.png" alt="isc dhcp config">
+                            <p class="text-muted">Capture de la configuration du fichier <code>/etc/dhcp/dhcpd.conf</code> avec plusieurs sous-réseaux et options précises (DNS, passerelles, durée des baux, etc.).</p>
+                        </div>
+
+                        <!-- Exemple 3 -->
+                        <div class="mb-4">
+                            <h3 class="text-secondary">Test client et bail DHCP</h3>
+                            <img class="img-fluid rounded shadow mb-3" src="test_dhcp_client.png" alt="Test DHCP">
+                            <p class="text-muted">Vérification sur un poste Windows via <code>ipconfig</code> que l’adresse IP attribuée correspond bien à la plage définie pour son VLAN, preuve que la redondance fonctionne même en cas d’arrêt d’un des serveurs DHCP.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="mb-5">
+                        <img class="img-fluid rounded shadow" src="https://i.ibb.co/8dMYKfw/dhcp.png" alt="Redondance DHCP">
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-primary">Informations supplémentaires</h3>
+                        <p><strong>Durée :</strong> 3 semaines</p>
+                        <p><strong>Rôle :</strong> Seul</p>
+                        <p><strong>Outils :</strong> Debian, ESXi, Windows Server, Switch L3 Cisco</p>
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="redondance-dhcp-gsb.pdf" class="btn" style="background-color: #2F4F4F; color: #D3D3D3;" target="_blank">Télécharger la documentation complète</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-gradient-primary-to-secondary text-white">
+        <div class="container px-5 my-5">
+            <div class="text-center">
+                <h2 class="display-4 fw-bolder mb-4">Un projet similaire à réaliser ?</h2>
+                <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contactez-moi</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-white py-4 mt-auto">
+    <div class="container px-5">
+        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+            <div class="col-auto"><div class="small m-0">Copyright &copy; Eliott Rivaletto</div></div>
+            <div class="col-auto">
+                <a class="small" href="confidentialité.html">Confidentialité</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="conditions.html">Conditions</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
